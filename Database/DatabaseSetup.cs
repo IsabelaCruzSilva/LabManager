@@ -5,14 +5,17 @@ using Microsoft.Data.Sqlite;
 class DatabaseSetup
 {
 
-    public DatabaseSetup()
+    private readonly DatabaseConfig _databaseConfig; //readonly (depois que você colocar um valor, não é possível mais alterá-lo)
+
+    public DatabaseSetup (DatabaseConfig databaseConfig)
     {
+        _databaseConfig = databaseConfig; //o primeiro é o atrubuto (por isso o this, para difrenciar)
         CreateCompuertTable();
         CreateLabTable(); 
     }
     public void CreateCompuertTable()
     {
-        var connection = new SqliteConnection("Data Source=database.db");
+        var connection = new SqliteConnection(_databaseConfig.ConnectionString);
         connection.Open();
 
 
