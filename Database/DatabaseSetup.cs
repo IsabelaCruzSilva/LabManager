@@ -11,7 +11,7 @@ class DatabaseSetup
     {
         _databaseConfig = databaseConfig; //o primeiro é o atrubuto (por isso o this, para difrenciar)
         CreateCompuertTable();
-        CreateLabTable(); 
+        
     }
     public void CreateCompuertTable()
     {
@@ -33,9 +33,5 @@ class DatabaseSetup
         connection.Close(); 
     }
 
-    public void CreateLabTable()
-    {
-
-    }
 
 }
