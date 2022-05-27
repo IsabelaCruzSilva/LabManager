@@ -56,5 +56,12 @@ if (modelName == "Computer")
         computerRepository.Delete(id); 
     }
 
+    if(modelAction == "Show")
+    {
+        Console.WriteLine("Computer Show");
+        var id = Convert.ToInt32(args[2]);
+        computerRepository.GetById(id); 
+    }
+
     
 }
