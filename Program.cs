@@ -27,6 +27,7 @@ if (modelName == "Computer")
     if(modelAction == "New")
     {
 
+        Console.WriteLine("Computer New");
         var id = Convert.ToInt32(args[2]);
         var ram = args[3];
         var processor = args [4]; 
@@ -35,4 +36,14 @@ if (modelName == "Computer")
         computerRepository.Save(computer); 
 
     }
+
+
+    if(modelAction == "Delete")
+    {
+        Console.WriteLine("Computer Delete");
+        var id = Convert.ToInt32(args[2]);
+        computerRepository.Delete(id); 
+    }
+
+    
 }
