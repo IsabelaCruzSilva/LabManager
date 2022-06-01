@@ -60,7 +60,8 @@ if (modelName == "Computer")
     {
         Console.WriteLine("Computer Show");
         var id = Convert.ToInt32(args[2]);
-        computerRepository.GetById(id); 
+        var computer = computerRepository.GetById(id); 
+        Console.WriteLine("{0}, {1}, {2}", computer.Id, computer.Ram, computer.Processor); 
     }
 
     
