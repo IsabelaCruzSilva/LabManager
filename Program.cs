@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using LabManager.Database; 
-using LabManeger.Repositories;
+using LabManager.Repositories;
 using LabManager.Models;
 
 var databaseConfig = new DatabaseConfig();
@@ -59,9 +59,18 @@ if (modelName == "Computer")
     if(modelAction == "Show")
     {
         Console.WriteLine("Computer Show");
+
         var id = Convert.ToInt32(args[2]);
+
+        if(computerRepository.ExistsById(id))
+        {
         var computer = computerRepository.GetById(id); 
-        Console.WriteLine("{0}, {1}, {2}", computer.Id, computer.Ram, computer.Processor); 
+        Console.WriteLine($"{computer.Id}, {computer.Ram}, {computer.Processor}"); 
+        }
+        else
+        {
+            Console.WriteLine($"O computador {id} não existe"); 
+        }
     }
 
     
