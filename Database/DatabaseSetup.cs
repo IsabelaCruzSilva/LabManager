@@ -11,8 +11,10 @@ class DatabaseSetup
     {
         _databaseConfig = databaseConfig; //o primeiro é o atrubuto (por isso o this, para difrenciar)
         CreateCompuertTable();
+        CreateLabTable();
         
     }
+
     public void CreateCompuertTable()
     {
         var connection = new SqliteConnection(_databaseConfig.ConnectionString);
@@ -31,6 +33,25 @@ class DatabaseSetup
 
         command.ExecuteNonQuery();
         connection.Close(); 
+    }
+
+    private void CreateLabTable()
+    {
+        var connection = new SqliteConnection(_databaseConfig.ConnectionString);
+        connection.Open();
+
+        var command = connection.CreateCommand();
+        command.CommandText = @"
+            CREATE TABLE IF NOT EXISTS Labs(
+                id int not null primary key,
+                number varchar(5) not null,
+                name varchar(100) not null,
+                block varchar(5) not null
+            );
+        ";
+
+        command.ExecuteNonQuery();
+        connection.Close();
     }
 
 
